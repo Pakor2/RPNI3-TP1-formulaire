@@ -1,22 +1,519 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Tailwind</title>
+    <title>Formulaire de don</title>
 </head>
 
-<body>
+<body class="min-h-screen bg-cover bg-center bg-fixed"
+      style="background-image:url('/fond_formulaire.png')">
 
-    <h1 class="text-4xl font-bold text-blue-600 text-center mt-10">
-        Tailwind test
-    </h1>
+<header class="bg-black/45 text-white">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+        <a href="#" aria-label="Accueil">
+            <img src="logo_croixrouge.svg" alt="Croix-Rouge" class="w-24 h-auto">
+        </a>
 
-    <div class="bg-red-500 text-white p-5 m-10 rounded-lg">
-       Premier test avec Tailwind.
+        <nav aria-label="Navigation principale" class="flex-1 flex justify-center mt-3">
+            <ul class="flex gap-10 text-sm font-medium">
+                <li><a href="#" class="hover:text-red-500">À PROPOS DE NOUS</a></li>
+                <li><a href="#" class="hover:text-red-500">NOS CHAMPS D’ACTION</a></li>
+                <li><a href="#" class="hover:text-red-500">DANS VOTRE COLLECTIVITÉ</a></li>
+            </ul>
+        </nav>
     </div>
+</header>
 
-    <script type="module" src="/src/main.ts"></script>
+<main>
+<form id="formDon">
+
+    <section id="etape1" class="min-h-[calc(100vh-90px)] flex items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-[45px] px-16 py-8 shadow-xl">
+
+            <h1 class="text-3xl font-bold text-center mb-6">Formulaire de don</h1>
+
+            <nav aria-label="Étapes du formulaire de don" class="mb-5">
+                <ol class="flex items-center">
+                    <li aria-current="step" class="flex flex-1 items-center">
+                        <a href="#etape1"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-red-600 text-white text-lg">
+                            <span class="sr-only">Étape </span>1
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape2"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>2
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape3"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>3
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li>
+                        <a href="#etape4"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>4
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+
+            <fieldset class="mb-5">
+                <legend class="sr-only">Type de don</legend>
+
+                <div class="grid grid-cols-2">
+                    <div>
+                        <input type="radio" id="unique" name="typeDon" value="unique" class="peer sr-only">
+                        <label for="unique"
+                               class="block cursor-pointer rounded-l-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            Don unique
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="mensuel" name="typeDon" value="mensuel" class="peer sr-only">
+                        <label for="mensuel"
+                               class="block cursor-pointer rounded-r-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            Don mensuel
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-4">
+                <legend class="sr-only">Montant du don</legend>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <input type="radio" id="don100" name="montant" value="100" class="peer sr-only">
+                        <label for="don100"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            100$
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="don200" name="montant" value="200" class="peer sr-only">
+                        <label for="don200"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            200$
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="don300" name="montant" value="300" class="peer sr-only">
+                        <label for="don300"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            300$
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="don400" name="montant" value="400" class="peer sr-only">
+                        <label for="don400"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            400$
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="mb-3">
+                <label for="autreDon" class="block text-lg font-bold mb-2">Autre don</label>
+                <input type="text"
+                       id="autreDon"
+                       name="autreDon"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <p class="mb-6 font-semibold leading-tight text-gray-600">
+                Le montant minimal accepté est de 10 $, tandis que le montant maximal autorisé est de 50 000 $.
+                Veuillez vous assurer que le montant saisi respecte ces limites afin que votre demande puisse être traitée correctement.
+            </p>
+
+            <button type="button"
+                    id="suivant1"
+                    class="w-full rounded-lg bg-red-600 py-4 text-lg font-medium text-white shadow-md hover:bg-red-700">
+                Faire un don
+            </button>
+        </div>
+    </section>
+
+    <section id="etape2" class="min-h-[calc(100vh-90px)] flex items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-[45px] px-16 py-8 shadow-xl">
+
+            <h1 class="text-3xl font-bold text-center mb-6">Information personnelle</h1>
+
+            <nav aria-label="Étapes du formulaire de don" class="mb-7">
+                <ol class="flex items-center">
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape1"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>1
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li aria-current="step" class="flex flex-1 items-center">
+                        <a href="#etape2"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-red-600 text-white text-lg">
+                            <span class="sr-only">Étape </span>2
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape3"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>3
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li>
+                        <a href="#etape4"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>4
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="mb-5">
+                <label for="prenom" class="block font-bold mb-2">Prénom</label>
+                <input type="text"
+                       id="prenom"
+                       name="prenom"
+                       autocomplete="given-name"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-5">
+                <label for="nom" class="block font-bold mb-2">Nom</label>
+                <input type="text"
+                       id="nom"
+                       name="nom"
+                       autocomplete="family-name"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-5">
+                <label for="courriel" class="block font-bold mb-2">Adresse courriel</label>
+                <p class="text-sm text-gray-500 mb-2">Ex : abcd@gmail.com</p>
+                <input type="email"
+                       id="courriel"
+                       name="courriel"
+                       autocomplete="email"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-7">
+                <label for="telephone" class="block font-bold mb-2">Téléphone</label>
+                <p class="text-sm text-gray-500 mb-2">Ex : 418 000 0000</p>
+                <input type="tel"
+                       id="telephone"
+                       name="telephone"
+                       autocomplete="tel"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button type="button"
+                        id="precedent2"
+                        class="rounded-lg border-2 border-red-600 py-4 font-medium text-red-600 hover:bg-red-50">
+                    Précédent
+                </button>
+
+                <button type="button"
+                        id="suivant2"
+                        class="rounded-lg bg-red-600 py-4 font-medium text-white hover:bg-red-700">
+                    Suivant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="etape3" class="min-h-[calc(100vh-90px)] flex items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-[45px] px-16 py-8 shadow-xl">
+
+            <h1 class="text-3xl font-bold text-center mb-6">Entrez votre adresse</h1>
+
+            <nav aria-label="Étapes du formulaire de don" class="mb-7">
+                <ol class="flex items-center">
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape1"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>1
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape2"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>2
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li aria-current="step" class="flex flex-1 items-center">
+                        <a href="#etape3"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-red-600 text-white text-lg">
+                            <span class="sr-only">Étape </span>3
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li>
+                        <a href="#etape4"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>4
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="mb-5">
+                <label for="adresse" class="block font-bold mb-2">Adresse municipale</label>
+                <input type="text"
+                       id="adresse"
+                       name="adresse"
+                       autocomplete="street-address"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-5">
+                <label for="appartement" class="block font-bold mb-2">
+                    Appartement <span class="font-normal text-gray-600">(facultatif)</span>
+                </label>
+                <input type="text"
+                       id="appartement"
+                       name="appartement"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-5">
+                <label for="ville" class="block font-bold mb-2">Ville</label>
+                <input type="text"
+                       id="ville"
+                       name="ville"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                    <label for="province" class="block font-bold mb-2">Province</label>
+                    <select id="province"
+                            name="province"
+                            class="w-full h-12 rounded-lg border border-gray-300 bg-white/80 px-4 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+                        <option value="">Choisir</option>
+                        <option value="alberta">Alberta</option>
+                        <option value="colombieBritannique">Colombie-Britannique</option>
+                        <option value="ileDuPrinceEdouard">Île-du-Prince-Édouard</option>
+                        <option value="manitoba">Manitoba</option>
+                        <option value="nouveauBrunswick">Nouveau-Brunswick</option>
+                        <option value="nouvelleEcosse">Nouvelle-Écosse</option>
+                        <option value="ontario">Ontario</option>
+                        <option value="quebec">Québec</option>
+                        <option value="saskatchewan">Saskatchewan</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="pays" class="block font-bold mb-2">Pays</label>
+                    <select id="pays"
+                            name="pays"
+                            class="w-full h-12 rounded-lg border border-gray-300 bg-white/80 px-4 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+                        <option value="">Choisir</option>
+                        <option value="canada">Canada</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-7">
+                <label for="codePostal" class="block font-bold mb-2">Code postal</label>
+                <input type="text"
+                       id="codePostal"
+                       name="codePostal"
+                       autocomplete="postal-code"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button type="button"
+                        id="precedent3"
+                        class="rounded-lg border-2 border-red-600 py-4 font-medium text-red-600 hover:bg-red-50">
+                    Précédent
+                </button>
+
+                <button type="button"
+                        id="suivant3"
+                        class="rounded-lg bg-red-600 py-4 font-medium text-white hover:bg-red-700">
+                    Suivant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="etape4" class="min-h-[calc(100vh-90px)] flex items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-[45px] px-16 py-8 shadow-xl">
+
+            <h1 class="text-3xl font-bold text-center mb-6">Moyen de paiement</h1>
+
+            <nav aria-label="Étapes du formulaire de don" class="mb-7">
+                <ol class="flex items-center">
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape1"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>1
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape2"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>2
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li class="flex flex-1 items-center">
+                        <a href="#etape3"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-gray-300 text-gray-500 text-lg">
+                            <span class="sr-only">Étape </span>3
+                        </a>
+                        <div class="h-1 flex-1 bg-gray-300"></div>
+                    </li>
+
+                    <li aria-current="step">
+                        <a href="#etape4"
+                           class="flex w-13 h-13 items-center justify-center rounded-full bg-red-600 text-white text-lg">
+                            <span class="sr-only">Étape </span>4
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+
+            <fieldset class="mb-6">
+                <legend class="sr-only">Moyen de paiement</legend>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <input type="radio" id="carte" name="paiement" value="carte" class="peer sr-only">
+                        <label for="carte"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            Carte bancaire
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="paypal" name="paiement" value="paypal" class="peer sr-only">
+                        <label for="paypal"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            PayPal
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="virement" name="paiement" value="virement" class="peer sr-only">
+                        <label for="virement"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            Virement bancaire
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="googlePay" name="paiement" value="googlePay" class="peer sr-only">
+                        <label for="googlePay"
+                               class="block cursor-pointer rounded-lg border border-gray-300 bg-white/80 py-3 text-center font-bold peer-checked:bg-red-600 peer-checked:text-white">
+                            Google Pay
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="mb-5">
+                <label for="titulaire" class="block font-bold mb-2">Nom du titulaire de la carte</label>
+                <input type="text"
+                       id="titulaire"
+                       name="titulaire"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="mb-5">
+                <label for="numeroCarte" class="block font-bold mb-2">Numéro de la carte</label>
+                <input type="text"
+                       id="numeroCarte"
+                       name="numeroCarte"
+                       inputmode="numeric"
+                       class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                    <label for="expiration" class="block font-bold mb-2">Date d’expiration</label>
+                    <input type="text"
+                           id="expiration"
+                           name="expiration"
+                           placeholder="MM/AA"
+                           class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+                </div>
+
+                <div>
+                    <label for="cvc" class="block font-bold mb-2">CVC</label>
+                    <input type="text"
+                           id="cvc"
+                           name="cvc"
+                           maxlength="4"
+                           inputmode="numeric"
+                           class="w-full rounded-lg border border-gray-300 bg-white/80 px-4 py-3 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 mb-7">
+                <input type="checkbox"
+                       id="frais"
+                       name="frais"
+                       class="w-5 h-5 accent-red-600">
+
+                <label for="frais" class="font-medium">
+                    Couvrir les frais de transaction
+                </label>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button type="button"
+                        id="precedent4"
+                        class="rounded-lg border-2 border-red-600 py-4 font-medium text-red-600 hover:bg-red-50">
+                    Précédent
+                </button>
+
+                <button type="submit"
+                        class="rounded-lg bg-red-600 py-4 font-medium text-white hover:bg-red-700">
+                    Valider
+                </button>
+            </div>
+        </div>
+    </section>
+
+</form>
+</main>
+
+<script type="module" src="/src/main.ts"></script>
 
 </body>
 </html>

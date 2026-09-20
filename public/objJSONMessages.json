@@ -1,0 +1,78 @@
+{
+    "typeDon": {
+        "vide": "Vous devez choisir un type de don."
+    },
+
+    "montant": {
+        "vide": "Vous devez choisir un montant.",
+        "min": "Le montant minimum est de 10 $.",
+        "max": "Le montant maximum est de 50 000 $."
+    },
+
+    "prenom": {
+        "vide": "Vous devez entrer votre prénom.",
+        "pattern": "Pour le prénom, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+
+    "nom": {
+        "vide": "Vous devez entrer votre nom de famille.",
+        "pattern": "Pour le nom de famille, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+
+    "courriel": {
+        "vide": "Vous devez entrer votre adresse courriel.",
+        "pattern": "Assurez-vous d'entrer une adresse courriel valide.",
+        "type": "Assurez-vous d'entrer une adresse courriel."
+    },
+
+    "telephone": {
+        "vide": "Vous devez entrer votre numéro de téléphone.",
+        "pattern": "Assurez-vous d'entrer un numéro de téléphone valide."
+    },
+
+    "adresse": {
+        "vide": "Vous devez entrer votre adresse municipale."
+    },
+
+    "ville": {
+        "vide": "Vous devez entrer votre ville.",
+        "pattern": "Assurez-vous d'entrer un nom de ville valide."
+    },
+
+    "province": {
+        "vide": "Vous devez choisir une province."
+    },
+
+    "pays": {
+        "vide": "Vous devez choisir un pays."
+    },
+
+    "codePostal": {
+        "vide": "Vous devez entrer votre code postal.",
+        "pattern": "Assurez-vous d'entrer un code postal valide."
+    },
+
+    "paiement": {
+        "vide": "Vous devez choisir un moyen de paiement."
+    },
+
+    "titulaire": {
+        "vide": "Vous devez entrer le nom du titulaire de la carte.",
+        "pattern": "Assurez-vous d'entrer un nom valide."
+    },
+
+    "numeroCarte": {
+        "vide": "Vous devez entrer le numéro de la carte.",
+        "pattern": "Assurez-vous d'entrer un numéro de carte valide."
+    },
+
+    "expiration": {
+        "vide": "Vous devez entrer la date d'expiration.",
+        "pattern": "Assurez-vous d'entrer une date d'expiration valide."
+    },
+
+    "cvc": {
+        "vide": "Vous devez entrer le CVC.",
+        "pattern": "Le CVC doit contenir 3 ou 4 chiffres."
+    }
+}
