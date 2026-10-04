@@ -23,8 +23,10 @@ const etape3 = document.querySelector<HTMLElement>("#etape3")!;
 const etape4 = document.querySelector<HTMLElement>("#etape4")!;
 
 const etapes = [etape1, etape2, etape3, etape4];
+const urlIconeErreur = "./icone_erreurs.png";
+
 // Je vais chercher les messages d'erreur dans le fichier JSON
-fetch("/objJSONMessages.json")
+fetch("./objJSONMessages.json")
     .then(function (reponse) {
         return reponse.json();
     })
@@ -93,7 +95,7 @@ function afficherEtape(numero: number): void {
 
 function modifierCouleurEtapes(): void {
 
-    // On récupère tous les liens des étapes    
+    // On récupère tous les liens des étapes
     const liens =
         document.querySelectorAll<HTMLAnchorElement>(".js-etape");
 
@@ -120,11 +122,13 @@ function modifierCouleurEtapes(): void {
             );
 
             liens[i].setAttribute("aria-current", "step");
+
         } else if (numero < etapeActuelle) {
             liens[i].classList.add(
                 "bg-red-200",
                 "text-red-700"
             );
+
         } else {
             liens[i].classList.add(
                 "bg-gray-300",
@@ -132,8 +136,10 @@ function modifierCouleurEtapes(): void {
             );
         }
     }
+
     modifierCouleurLignes();
 }
+
 // Changement de couleur des numéros des étapes
 function modifierCouleurLignes(): void {
     const navigations =
@@ -174,6 +180,7 @@ function validerEtape(etape: HTMLElement): boolean {
             valide = false;
         }
     }
+
     return valide;
 }
 
@@ -198,6 +205,7 @@ function validerChamp(
             erreur,
             objMessages[nom]?.vide
         );
+
         return false;
     }
 
@@ -210,6 +218,7 @@ function validerChamp(
             erreur,
             objMessages[nom]?.type
         );
+
         return false;
     }
 
@@ -222,9 +231,12 @@ function validerChamp(
             erreur,
             objMessages[nom]?.pattern
         );
+
         return false;
     }
+
     cacherErreur(champ, erreur);
+
     return true;
 }
 
@@ -236,11 +248,33 @@ function afficherErreur(
 ): void {
 
     if (erreur) {
-        erreur.textContent = message || "Ce champ est invalide.";
+
+        // On récupère le texte emessage erreur
+        const texteErreur =
+            erreur.querySelector<HTMLElement>(".message-erreur");
+
+        // On récupère l'icône du message
+        const iconeErreur =
+            erreur.querySelector<HTMLImageElement>("img");
+
+        // chemin de l'icône
+        if (iconeErreur) {
+            iconeErreur.src = urlIconeErreur;
+        }
+
+        if (texteErreur) {
+            texteErreur.textContent =
+                message || "Ce champ est invalide.";
+        }
+
+        // On affiche l'icône et le message
         erreur.classList.remove("hidden");
+        erreur.classList.add("flex");
     }
+
     champ.setAttribute("aria-invalid", "true");
 }
+
 // On cache un message d'erreur
 function cacherErreur(
     champ: HTMLInputElement | HTMLSelectElement,
@@ -248,11 +282,69 @@ function cacherErreur(
 ): void {
 
     if (erreur) {
-        erreur.textContent = "";
+
+        // On récupère le texte du message
+        const texteErreur =
+            erreur.querySelector<HTMLElement>(".message-erreur");
+
+        // On vide le texte du message
+        if (texteErreur) {
+            texteErreur.textContent = "";
+        }
+
+        // cache l'icône et le message
         erreur.classList.add("hidden");
+        erreur.classList.remove("flex");
     }
+
     champ.removeAttribute("aria-invalid");
 }
+
+// On affiche un message pour les choix du formulaire
+function afficherErreurChoix(
+    erreur: HTMLElement | null,
+    message: string
+): void {
+
+    if (erreur) {
+        const texteErreur =
+            erreur.querySelector<HTMLElement>(".message-erreur");
+
+        const iconeErreur =
+            erreur.querySelector<HTMLImageElement>("img");
+
+        if (iconeErreur) {
+            iconeErreur.src = urlIconeErreur;
+        }
+
+        if (texteErreur) {
+            texteErreur.textContent = message;
+        }
+
+        erreur.classList.remove("hidden");
+        erreur.classList.add("flex");
+    }
+}
+
+// On cache un message pour les choix du formulaire
+function cacherErreurChoix(
+    erreur: HTMLElement | null
+): void {
+
+    if (erreur) {
+
+        const texteErreur =
+            erreur.querySelector<HTMLElement>(".message-erreur");
+
+        if (texteErreur) {
+            texteErreur.textContent = "";
+        }
+
+        erreur.classList.add("hidden");
+        erreur.classList.remove("flex");
+    }
+}
+
 // On vérifie les choix de la première étape
 function validerEtape1(): boolean {
     let valide = true;
@@ -277,59 +369,52 @@ function validerEtape1(): boolean {
         document.querySelector<HTMLElement>("#erreurMontant");
 
     if (!typeDon) {
-        if (erreurTypeDon) {
-            erreurTypeDon.textContent =
-                objMessages.typeDon?.vide || "";
+        afficherErreurChoix(
+            erreurTypeDon,
+            objMessages.typeDon?.vide || ""
+        );
 
-            erreurTypeDon.classList.remove("hidden");
-        }
         valide = false;
+
     } else {
-        if (erreurTypeDon) {
-            erreurTypeDon.textContent = "";
-            erreurTypeDon.classList.add("hidden");
-        }
+        cacherErreurChoix(erreurTypeDon);
     }
 
     if (!montant && autreDon.value.trim() === "") {
-        if (erreurMontant) {
-            erreurMontant.textContent =
-                objMessages.montant?.vide || "";
+        afficherErreurChoix(
+            erreurMontant,
+            objMessages.montant?.vide || ""
+        );
 
-            erreurMontant.classList.remove("hidden");
-        }
         valide = false;
+
     } else if (autreDon.value.trim() !== "") {
         const valeur = Number(autreDon.value);
 
         if (valeur < 10) {
-            if (erreurMontant) {
-                erreurMontant.textContent =
-                    objMessages.montant?.min || "";
+            afficherErreurChoix(
+                erreurMontant,
+                objMessages.montant?.min || ""
+            );
 
-                erreurMontant.classList.remove("hidden");
-            }
             valide = false;
+
         } else if (valeur > 50000) {
-            if (erreurMontant) {
-                erreurMontant.textContent =
-                    objMessages.montant?.max || "";
+            afficherErreurChoix(
+                erreurMontant,
+                objMessages.montant?.max || ""
+            );
 
-                erreurMontant.classList.remove("hidden");
-            }
             valide = false;
+
         } else {
-            if (erreurMontant) {
-                erreurMontant.textContent = "";
-                erreurMontant.classList.add("hidden");
-            }
+            cacherErreurChoix(erreurMontant);
         }
+
     } else {
-        if (erreurMontant) {
-            erreurMontant.textContent = "";
-            erreurMontant.classList.add("hidden");
-        }
+        cacherErreurChoix(erreurMontant);
     }
+
     return valide;
 }
 
@@ -346,23 +431,21 @@ function validerEtape4(): boolean {
         document.querySelector<HTMLElement>("#erreurPaiement");
 
     if (!paiement) {
-        if (erreurPaiement) {
-            erreurPaiement.textContent =
-                objMessages.paiement?.vide || "";
+        afficherErreurChoix(
+            erreurPaiement,
+            objMessages.paiement?.vide || ""
+        );
 
-            erreurPaiement.classList.remove("hidden");
-        }
         valide = false;
+
     } else {
-        if (erreurPaiement) {
-            erreurPaiement.textContent = "";
-            erreurPaiement.classList.add("hidden");
-        }
+        cacherErreurChoix(erreurPaiement);
     }
 
     if (!validerEtape(etape4)) {
         valide = false;
     }
+
     return valide;
 }
 
@@ -374,8 +457,10 @@ function initialiserNavigationEtapes(): void {
     for (let i = 0; i < liens.length; i++) {
         liens[i].addEventListener("click", function (evenement) {
             evenement.preventDefault();
+
             const numero =
                 Number(liens[i].dataset.etape);
+
             if (numero <= etapeActuelle) {
                 afficherEtape(numero);
             }
