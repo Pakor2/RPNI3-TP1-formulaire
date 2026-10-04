@@ -23,6 +23,7 @@ const etape3 = document.querySelector<HTMLElement>("#etape3")!;
 const etape4 = document.querySelector<HTMLElement>("#etape4")!;
 
 const etapes = [etape1, etape2, etape3, etape4];
+
 const urlIconeErreur = "./icone_erreurs.png";
 
 // Je vais chercher les messages d'erreur dans le fichier JSON
@@ -70,13 +71,37 @@ function initialiser(): void {
         afficherEtape(3);
     });
 
-    // Vérification formulaire quand on clique sur Valider
+    // afficher la page de remerciement si le formulaire est valide
     formulaire.addEventListener("submit", function (evenement) {
-        if (!validerEtape4()) {
-            evenement.preventDefault();
+        evenement.preventDefault();
+
+        if (validerEtape4()) {
+
+            // cacher les quatre étapes
+            for (let i = 0; i < etapes.length; i++) {
+                etapes[i].classList.add("hidden");
+            }
+
+            const confirmation =
+                document.querySelector<HTMLElement>("#confirmation")!;
+
+            // affiche le message de remerciement
+            confirmation.classList.remove("hidden");
         }
     });
 
+    // nouveau don
+    document.querySelector("#nouveauDon")?.addEventListener("click", function () {
+
+        // vider tous les champs du formulaire
+        formulaire.reset();
+
+        // cache la page de remerciement
+        document.querySelector("#confirmation")?.classList.add("hidden");
+
+        // On retourne à la première étape
+        afficherEtape(1);
+    });
     initialiserNavigationEtapes();
 }
 
@@ -87,9 +112,7 @@ function afficherEtape(numero: number): void {
     }
 
     etapes[numero - 1].classList.remove("hidden");
-
     etapeActuelle = numero;
-
     modifierCouleurEtapes();
 }
 
